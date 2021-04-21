@@ -8,7 +8,7 @@ import com.learning.photoshow.core.data.PhotoEntity
 @Dao
 interface PhotosDao {
     @Insert
-    fun insert(photo: PhotoEntity)
+    fun insert(photo: PhotoEntity?)
 
     @Query("SELECT * FROM photos")
     fun fetchAll(): List<PhotoEntity>

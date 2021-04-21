@@ -2,7 +2,7 @@ package com.learning.photoshow.core.usecases
 
 import com.learning.photoshow.core.data.ResultOutput
 
-abstract class BaseProcessor<T : Any> {
+abstract class BaseUseCase<T : Any> {
     suspend fun execute(): ResultOutput<T> = try {
         validate()
         process()

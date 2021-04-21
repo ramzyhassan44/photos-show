@@ -4,7 +4,7 @@ import com.learning.photoshow.core.data.PhotoEntity
 import com.learning.photoshow.core.repos.PhotosRepo
 
 class PhotoRepoImpl(private val dao: PhotosDao) : PhotosRepo {
-    override fun insert(photo: PhotoEntity) {
+    override fun insert(photo: PhotoEntity?) {
         dao.insert(photo)
     }
 
