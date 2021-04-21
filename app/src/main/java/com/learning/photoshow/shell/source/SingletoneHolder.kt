@@ -2,6 +2,7 @@ package com.learning.photoshow.shell.source
 
 open class SingletonHolder<T, A>(creator: (A) -> T) {
     private var creator: ((A) -> T)? = creator
+
     @Volatile
     private var instance: T? = null
 
