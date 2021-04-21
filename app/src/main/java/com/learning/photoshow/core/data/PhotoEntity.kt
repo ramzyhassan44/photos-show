@@ -4,9 +4,9 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "photos")
 data class PhotoEntity(
-    @PrimaryKey val uid: Int,
+    @PrimaryKey(autoGenerate = true) val photoId: Int,
     @ColumnInfo(name = "creationTime") val creationTime: String,
     @ColumnInfo(name = "photoName") val name: String,
     @ColumnInfo(name = "photoPath") val path: String
