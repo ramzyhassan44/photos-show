@@ -33,6 +33,7 @@ class ListingPhotosActivity : AppCompatActivity() {
             )
         }
         supportActionBar?.title = getString(R.string.view_photos)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         observeLiveData()
         viewModel.getPhotosList()
     }
@@ -69,5 +70,10 @@ class ListingPhotosActivity : AppCompatActivity() {
             adapter = ListingPhotosAdapter(photos, viewModel.onItemClicked)
             binding.photosRecycler.adapter = adapter
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
     }
 }
