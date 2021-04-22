@@ -3,9 +3,9 @@ package com.learning.photoshow.shell.routers
 import com.learning.photoshow.core.routers.CREATING_PHOTO_ROUTER
 import com.learning.photoshow.core.routers.LISTING_PHOTOS_ROUTER
 import com.learning.photoshow.core.routers.VIEWING_PHOTO_ROUTER
-import com.learning.photoshow.shell.ui.splash.CreatingPhotoActivity
-import com.learning.photoshow.shell.ui.splash.ListingPhotosActivity
-import com.learning.photoshow.shell.ui.splash.ViewingPhotoActivity
+import com.learning.photoshow.shell.ui.photos.creation.CreatingPhotoActivity
+import com.learning.photoshow.shell.ui.photos.listing.ListingPhotosActivity
+import com.learning.photoshow.shell.ui.photos.preview.ViewingPhotoActivity
 
 object RoutingTable {
     private var applicationRouters: HashMap<String, Class<*>>? = null
