@@ -1,10 +1,12 @@
 package com.learning.photoshow.shell.ui.photos.listing
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.learning.photoshow.core.data.SinglePhoto
 import com.learning.photoshow.databinding.RecyclerPhotoRowBinding
+import java.io.File
 
 class ListingPhotosAdapter(
     var photos: List<SinglePhoto>,
@@ -25,6 +27,7 @@ class ListingPhotosAdapter(
         with(holder) {
             binding.photoName.text = photos[position].name
             binding.creationTime.text = photos[position].creationTime
+            binding.photoViewer.setImageURI(Uri.fromFile(File(photos[position].path)))
             itemView.setOnClickListener { onItemClicked(position) }
         }
     }

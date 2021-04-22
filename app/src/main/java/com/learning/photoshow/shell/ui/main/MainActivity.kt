@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.view.View
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -13,6 +14,8 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import com.learning.photoshow.BuildConfig
+import com.learning.photoshow.R
+import com.learning.photoshow.core.data.State
 import com.learning.photoshow.core.usecases.PhotoCreationUseCase
 import com.learning.photoshow.core.viewmodels.MainViewModel
 import com.learning.photoshow.databinding.ActivityMainBinding
@@ -57,9 +60,26 @@ class MainActivity : AppCompatActivity() {
         binding.bottomSheetLayout.cancel.setOnClickListener {
             bottomSheetBehavior.state = STATE_COLLAPSED
         }
-
+        observeLiveData()
     }
 
+    private fun observeLiveData() {
+        with(viewModel) {
+            state.observe(this@MainActivity, ::handleState)
+        }
+    }
+
+    private fun handleState(state: State<Boolean>?) {
+        when (state) {
+            is State.ErrorState -> showMessage(state.exception.message)
+            is State.SuccessState -> showMessage(getString(R.string.photo_added_successfully))
+        }
+    }
+
+    private fun showMessage(message: String?) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG)
+            .show()
+    }
 
     private val cameraResultContract =
         registerForActivityResult(ActivityResultContracts.TakePicture()) { capturedSuccessfully ->
