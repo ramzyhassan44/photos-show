@@ -8,7 +8,5 @@ class PhotosListingUseCase(private val photosRepo: PhotosRepo) :
     BaseUseCase<Nothing?, List<SinglePhoto>>() {
     override suspend fun validate(parameter: Nothing?) = Unit
     override suspend fun process(parameter: Nothing?): ResultOutput<List<SinglePhoto>> =
-        ResultOutput.SuccessResult(
-            photosRepo.fetchAll().map { SinglePhoto(it.name, it.creationTime, it.path) })
-
+        ResultOutput.SuccessResult(photosRepo.fetchAll())
 }
