@@ -18,10 +18,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.takePhoto.setOnClickListener {
-            viewModel.goToTakePhoto()
-        }
-
         binding.viewPhotos.setOnClickListener {
             viewModel.goToViewPhotos()
         }
