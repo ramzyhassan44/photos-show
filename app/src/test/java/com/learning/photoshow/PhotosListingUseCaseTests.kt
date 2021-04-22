@@ -1,6 +1,6 @@
 package com.learning.photoshow
 
-import com.learning.photoshow.core.data.PhotoEntity
+import com.learning.photoshow.shell.source.PhotoEntity
 import com.learning.photoshow.core.data.ResultOutput
 import com.learning.photoshow.core.data.SinglePhoto
 import com.learning.photoshow.core.usecases.PhotosListingUseCase

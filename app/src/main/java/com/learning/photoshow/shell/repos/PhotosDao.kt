@@ -3,7 +3,7 @@ package com.learning.photoshow.shell.repos
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.learning.photoshow.core.data.PhotoEntity
+import com.learning.photoshow.shell.source.PhotoEntity
 
 @Dao
 interface PhotosDao {

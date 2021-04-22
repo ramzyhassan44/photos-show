@@ -1,6 +1,6 @@
 package com.learning.photoshow.shell.repos
 
-import com.learning.photoshow.core.data.PhotoEntity
+import com.learning.photoshow.shell.source.PhotoEntity
 import com.learning.photoshow.core.data.SinglePhoto
 import com.learning.photoshow.core.repos.PhotosRepo
 

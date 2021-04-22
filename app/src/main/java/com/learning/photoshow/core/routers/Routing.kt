@@ -1,0 +1,5 @@
+package com.learning.photoshow.core.routers
+
+const val CREATING_PHOTO_ROUTER = "CREATING_PHOTO_ROUTER"
+const val LISTING_PHOTOS_ROUTER = "LISTING_PHOTOS_ROUTER"
+const val VIEWING_PHOTO_ROUTER = "VIEWING_PHOTO_ROUTER"
