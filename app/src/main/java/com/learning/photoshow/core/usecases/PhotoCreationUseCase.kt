@@ -6,7 +6,7 @@ import com.learning.photoshow.core.repos.PhotosRepo
 import com.learning.photoshow.core.validators.ShouldBePresent
 
 class PhotoCreationUseCase(private val photosRepo: PhotosRepo) :
-    BaseUseCase<SinglePhoto, Nothing?>() {
+    BaseUseCase<SinglePhoto, Boolean>() {
 
     override suspend fun validate(parameter: SinglePhoto) {
         ShouldBePresent(parameter.name, parameter::name.name)
@@ -14,8 +14,8 @@ class PhotoCreationUseCase(private val photosRepo: PhotosRepo) :
         ShouldBePresent(parameter.path, parameter::path.name)
     }
 
-    override suspend fun process(parameter: SinglePhoto): ResultOutput<Nothing?> {
+    override suspend fun process(parameter: SinglePhoto): ResultOutput<Boolean> {
         photosRepo.insert(parameter)
-        return ResultOutput.SuccessResult(null)
+        return ResultOutput.SuccessResult(true)
     }
 }

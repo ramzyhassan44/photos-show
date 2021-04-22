@@ -1,5 +1,56 @@
 package com.learning.photoshow
 
-class PhotoCreationUseCaseTests {
+import com.learning.photoshow.core.data.ResultOutput
+import com.learning.photoshow.core.data.SinglePhoto
+import com.learning.photoshow.core.repos.PhotosRepo
+import com.learning.photoshow.core.usecases.PhotoCreationUseCase
+import io.mockk.coJustRun
+import io.mockk.mockk
+import kotlinx.coroutines.runBlocking
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
+import org.junit.Test
 
+class PhotoCreationUseCaseTests {
+    private val photosRepo = mockk<PhotosRepo>()
+
+    @Test
+    fun `creating photo with empty name throws exception`(): Unit = runBlocking {
+        val singlePhoto = SinglePhoto(name = "", creationTime = "10:00 PM", path = "//photoPath")
+        try {
+            PhotoCreationUseCase(photosRepo).execute(singlePhoto)
+        } catch (e: Exception) {
+            assertEquals("${singlePhoto::name.name} is required", e.message)
+        }
+    }
+
+    @Test
+    fun `creating photo with empty creationTime throws exception`(): Unit = runBlocking {
+        val singlePhoto = SinglePhoto(name = "Photo name", creationTime = "", path = "//photoPath")
+        try {
+            PhotoCreationUseCase(photosRepo).execute(singlePhoto)
+        } catch (e: Exception) {
+            assertEquals("${singlePhoto::creationTime.name} is required", e.message)
+        }
+    }
+
+    @Test
+    fun `creating photo with empty path throws exception`(): Unit = runBlocking {
+        val singlePhoto = SinglePhoto(name = "Photo name", creationTime = "10:00 PM", path = "")
+        try {
+            PhotoCreationUseCase(photosRepo).execute(singlePhoto)
+        } catch (e: Exception) {
+            assertEquals("${singlePhoto::path.name} is required", e.message)
+        }
+    }
+
+    @Test
+    fun `creating photo with valid data works`(): Unit = runBlocking {
+        val singlePhoto =
+            SinglePhoto(name = "Photo name", creationTime = "10:00 PM", path = "//photoPath")
+        coJustRun { photosRepo.insert(singlePhoto) }
+        val result =
+            PhotoCreationUseCase(photosRepo).execute(singlePhoto) as ResultOutput.SuccessResult
+        assertTrue(result.data)
+    }
 }
