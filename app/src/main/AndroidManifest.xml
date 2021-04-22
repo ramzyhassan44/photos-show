@@ -18,6 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".shell.ui.main.MainActivity" />
         <activity android:name=".shell.ui.photos.creation.CreatingPhotoActivity" />
         <activity android:name=".shell.ui.photos.listing.ListingPhotosActivity" />
         <activity android:name=".shell.ui.photos.preview.ViewingPhotoActivity" />

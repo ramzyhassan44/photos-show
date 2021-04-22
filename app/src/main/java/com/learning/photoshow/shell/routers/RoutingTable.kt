@@ -2,7 +2,9 @@ package com.learning.photoshow.shell.routers
 
 import com.learning.photoshow.core.routers.CREATING_PHOTO_ROUTER
 import com.learning.photoshow.core.routers.LISTING_PHOTOS_ROUTER
+import com.learning.photoshow.core.routers.MAIN_SCREEN_ROUTER
 import com.learning.photoshow.core.routers.VIEWING_PHOTO_ROUTER
+import com.learning.photoshow.shell.ui.main.MainActivity
 import com.learning.photoshow.shell.ui.photos.creation.CreatingPhotoActivity
 import com.learning.photoshow.shell.ui.photos.listing.ListingPhotosActivity
 import com.learning.photoshow.shell.ui.photos.preview.ViewingPhotoActivity
@@ -22,6 +24,7 @@ object RoutingTable {
             put(CREATING_PHOTO_ROUTER, CreatingPhotoActivity::class.java)
             put(LISTING_PHOTOS_ROUTER, ListingPhotosActivity::class.java)
             put(VIEWING_PHOTO_ROUTER, ViewingPhotoActivity::class.java)
+            put(MAIN_SCREEN_ROUTER, MainActivity::class.java)
         }
     }
 
