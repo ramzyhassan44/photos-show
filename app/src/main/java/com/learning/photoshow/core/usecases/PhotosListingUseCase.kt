@@ -1,7 +1,7 @@
 package com.learning.photoshow.core.usecases
 
-import com.learning.photoshow.core.data.State
 import com.learning.photoshow.core.data.SinglePhoto
+import com.learning.photoshow.core.data.State
 import com.learning.photoshow.core.repos.PhotosRepo
 
 class PhotosListingUseCase(private val photosRepo: PhotosRepo) :
