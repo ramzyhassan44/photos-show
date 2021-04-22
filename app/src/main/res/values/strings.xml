@@ -3,4 +3,5 @@
     <string name="photo_show">Photo Show!</string>
     <string name="take_photo">Take photo</string>
     <string name="view_photos">View Photos</string>
+    <string name="no_data_text">You have no photos yet</string>
 </resources>

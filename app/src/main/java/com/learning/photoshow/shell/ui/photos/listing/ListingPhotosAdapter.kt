@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.learning.photoshow.core.data.SinglePhoto
 import com.learning.photoshow.databinding.RecyclerPhotoRowBinding
 
-class ListingPhotosAdapter(var photos: List<SinglePhoto>) :
+class ListingPhotosAdapter(
+    var photos: List<SinglePhoto>,
+    val onItemClicked: (position: Int) -> Unit
+) :
     RecyclerView.Adapter<ListingPhotosAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: RecyclerPhotoRowBinding) :
@@ -22,6 +25,7 @@ class ListingPhotosAdapter(var photos: List<SinglePhoto>) :
         with(holder) {
             binding.photoName.text = photos[position].name
             binding.creationTime.text = photos[position].creationTime
+            itemView.setOnClickListener { onItemClicked(position) }
         }
     }
 

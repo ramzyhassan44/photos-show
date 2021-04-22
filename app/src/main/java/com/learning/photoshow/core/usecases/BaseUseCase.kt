@@ -1,16 +1,16 @@
 package com.learning.photoshow.core.usecases
 
-import com.learning.photoshow.core.data.ResultOutput
+import com.learning.photoshow.core.data.State
 
 abstract class BaseUseCase<INPUT, OUTPUT> {
-    suspend fun execute(parameter: INPUT): ResultOutput<OUTPUT> = try {
+    suspend fun execute(parameter: INPUT): State<OUTPUT> = try {
         validate(parameter)
         process(parameter)
     } catch (exception: Exception) {
-        ResultOutput.ErrorResult(exception)
+        State.ErrorState(null, exception)
     }
 
     abstract suspend fun validate(parameter: INPUT)
 
-    abstract suspend fun process(parameter: INPUT): ResultOutput<OUTPUT>
+    abstract suspend fun process(parameter: INPUT): State<OUTPUT>
 }

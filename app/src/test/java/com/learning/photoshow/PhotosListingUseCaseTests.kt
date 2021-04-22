@@ -1,7 +1,7 @@
 package com.learning.photoshow
 
 import com.learning.photoshow.shell.source.PhotoEntity
-import com.learning.photoshow.core.data.ResultOutput
+import com.learning.photoshow.core.data.State
 import com.learning.photoshow.core.data.SinglePhoto
 import com.learning.photoshow.core.usecases.PhotosListingUseCase
 import com.learning.photoshow.shell.repos.PhotoRepoImpl
@@ -31,7 +31,7 @@ class PhotosListingUseCaseTests {
                 PhotoEntity.create(singlePhoto3)
             )
         }
-        val result = PhotosListingUseCase(photosRepo).execute(null) as ResultOutput.SuccessResult
+        val result = PhotosListingUseCase(photosRepo).execute(null) as State.SuccessState
         assertEquals(3, result.data.size)
     }
 }

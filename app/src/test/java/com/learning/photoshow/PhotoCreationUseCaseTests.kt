@@ -1,7 +1,7 @@
 package com.learning.photoshow
 
 import com.learning.photoshow.shell.source.PhotoEntity
-import com.learning.photoshow.core.data.ResultOutput
+import com.learning.photoshow.core.data.State
 import com.learning.photoshow.core.data.SinglePhoto
 import com.learning.photoshow.core.usecases.PhotoCreationUseCase
 import com.learning.photoshow.shell.repos.PhotoRepoImpl
@@ -53,7 +53,7 @@ class PhotoCreationUseCaseTests {
             SinglePhoto(name = "Photo name", creationTime = "10:00 PM", path = "//photoPath")
         coJustRun { photosDao.insert(PhotoEntity.create(singlePhoto)) }
         val result =
-            PhotoCreationUseCase(photosRepo).execute(singlePhoto) as ResultOutput.SuccessResult
+            PhotoCreationUseCase(photosRepo).execute(singlePhoto) as State.SuccessState
         assertTrue(result.data)
     }
 }
