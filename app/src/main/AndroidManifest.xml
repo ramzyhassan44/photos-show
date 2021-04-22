@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.learning.photoshow">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
     <application
         android:name=".shell.app.PhotoShowApp"
         android:allowBackup="true"
@@ -24,6 +28,16 @@
         <activity android:name=".shell.ui.main.MainActivity" />
         <activity android:name=".shell.ui.photos.listing.ListingPhotosActivity" />
         <activity android:name=".shell.ui.photos.preview.ViewingPhotoActivity" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

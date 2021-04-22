@@ -4,4 +4,7 @@
     <string name="take_photo">Take photo</string>
     <string name="view_photos">View Photos</string>
     <string name="no_data_text">You have no photos yet</string>
+    <string name="photo_name">Photo Name</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
 </resources>

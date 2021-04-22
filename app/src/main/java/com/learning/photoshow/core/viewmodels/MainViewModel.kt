@@ -10,4 +10,8 @@ class MainViewModel(private val router: Router) : ViewModel() {
         router.routeTo(LISTING_PHOTOS_ROUTER, null, false)
     }
 
+    fun savePhoto() {
+
+    }
+
 }
