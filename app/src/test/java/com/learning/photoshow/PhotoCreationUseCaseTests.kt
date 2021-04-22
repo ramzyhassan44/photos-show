@@ -1,9 +1,11 @@
 package com.learning.photoshow
 
+import com.learning.photoshow.core.data.PhotoEntity
 import com.learning.photoshow.core.data.ResultOutput
 import com.learning.photoshow.core.data.SinglePhoto
-import com.learning.photoshow.core.repos.PhotosRepo
 import com.learning.photoshow.core.usecases.PhotoCreationUseCase
+import com.learning.photoshow.shell.repos.PhotoRepoImpl
+import com.learning.photoshow.shell.repos.PhotosDao
 import io.mockk.coJustRun
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
@@ -12,7 +14,8 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class PhotoCreationUseCaseTests {
-    private val photosRepo = mockk<PhotosRepo>()
+    private val photosDao = mockk<PhotosDao>()
+    private val photosRepo = PhotoRepoImpl(photosDao)
 
     @Test
     fun `creating photo with empty name throws exception`(): Unit = runBlocking {
@@ -48,7 +51,7 @@ class PhotoCreationUseCaseTests {
     fun `creating photo with valid data works`(): Unit = runBlocking {
         val singlePhoto =
             SinglePhoto(name = "Photo name", creationTime = "10:00 PM", path = "//photoPath")
-        coJustRun { photosRepo.insert(singlePhoto) }
+        coJustRun { photosDao.insert(PhotoEntity.create(singlePhoto)) }
         val result =
             PhotoCreationUseCase(photosRepo).execute(singlePhoto) as ResultOutput.SuccessResult
         assertTrue(result.data)
