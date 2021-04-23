@@ -53,7 +53,7 @@ PhotoShow application with a meaningful separation for layers and features with 
     - utils [holds some helpers class]
     
     
-  ![Application Flow Diagram]()  
+  ![Application Flow Diagram](https://github.com/ramzyhassan44/photos-show/blob/master/app-arch.png)  
 
   
 ## Tasks  
